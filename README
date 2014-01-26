@@ -1,0 +1,3 @@
+PHP Dynamic SQLite
+
+PHP script that uses PDO and arrays to dynamically insert values into an SQLite database.
