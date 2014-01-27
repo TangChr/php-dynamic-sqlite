@@ -2,7 +2,6 @@
 
 /**
  * @author Christian Tang
- * @copyright 2014
  */
 
 function sqlite_insert($db, $table, $array)
