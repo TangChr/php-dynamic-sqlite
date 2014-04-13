@@ -12,7 +12,6 @@ PHP-library for working with SQLite databases.
 Example
 --------------
 ```php
-<?php
 /* Create table */
 require 'dynamic_sqlite.php';
 
@@ -26,7 +25,6 @@ $sqlite = new SQLite($db);
 $sqlite->initDb();
 
 $sqlite->createTable($table);
-?>
 ```
 
 ```php
