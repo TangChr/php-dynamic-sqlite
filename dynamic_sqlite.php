@@ -6,21 +6,21 @@
 
 class SQLite
 {
-    private $db;
-    private $dbname;
+    private $database;
+    private $databaseName;
     
     
-    public function __construct($dbname)
+    public function __construct($databaseName)
     {
-        $this->dbname = $dbname;
+        $this->databaseName = $databaseName;
     }
     
-    public function initDb()
+    public function initdatabase()
     {
         try
         {
-            $this->db = new PDO('sqlite:'.$this->dbname);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->database = new PDO('sqlite:'.$this->databaseName);
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $e)
         {
@@ -40,7 +40,7 @@ class SQLite
         $strFields .= ')';
         $strTable .= $strFields;
                 
-        $this->db->exec($strTable);
+        $this->database->exec($strTable);
     }
     
     function insert($table, $array)
@@ -50,7 +50,7 @@ class SQLite
             $strColumns = implode(',', array_keys($array));
             $strValues = implode(',', array_fill(0, count($array), '?'));
 
-            $stmt = $this->db->prepare("INSERT INTO $table ({$strColumns}) VALUES ({$strValues})");
+            $stmt = $this->database->prepare("INSERT INTO $table ({$strColumns}) VALUES ({$strValues})");
             return $stmt->execute(array_values($array));
         }
         catch(PDOException $e)
