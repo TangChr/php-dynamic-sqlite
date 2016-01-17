@@ -9,14 +9,16 @@ PHP-library for working with SQLite databases.
 - Create tables
 - Insert values using arrays
 
-Example
---------------
+### Examples
 ```php
-/* Create table */
+<?php
+/*
+Example: Create table
+*/
 require 'dynamic_sqlite.php';
-
 $db = 'messages.db';
-$table = new SQliteTable('message');
+
+$table = new SQLiteTable('message');
 $table->addField('id', 'INTEGER PRIMARY KEY');
 $table->addField('title', 'TEXT');
 $table->addField('text', 'TEXT');
@@ -25,12 +27,16 @@ $sqlite = new SQLite($db);
 $sqlite->initDb();
 
 $sqlite->createTable($table);
+?>
 ```
 
 ```php
-/* Insert row */
+<?php
+/*
+Example: Insert row
+*/
 require 'dynamic_sqlite.php';
-$db = 'messages.db';
+$db    = 'messages.db';
 $table = 'message';
 
 $sqlite = new SQLite($db);
@@ -40,4 +46,5 @@ $message = array('title'=>'My Title', 'text'=>'My Message');
 
 if($sqlite->insert($table, $message))
     echo 'Success!';
+?>
 ```

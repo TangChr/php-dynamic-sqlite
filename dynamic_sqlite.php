@@ -30,27 +30,27 @@ class SQLite
     
     function createTable($table)
     {
-        $strTable = 'CREATE TABLE IF NOT EXISTS '.$table->name.' (';
-        $strFields;
+        $sTable = 'CREATE TABLE IF NOT EXISTS '.$table->name.' (';
+        $sFields;
         foreach($table->fields as $f) {
-            if($strFields != '')
-            $strFields .= ',';
-            $strFields .= $f->name.' '.$f->type;
+            if($sFields != '')
+            $sFields .= ',';
+            $sFields .= $f->name.' '.$f->type;
         }
-        $strFields .= ')';
-        $strTable .= $strFields;
+        $sFields .= ')';
+        $sTable .= $sFields;
                 
-        $this->database->exec($strTable);
+        $this->database->exec($sTable);
     }
     
     function insert($table, $array)
     {
         try 
         {
-            $strColumns = implode(',', array_keys($array));
-            $strValues = implode(',', array_fill(0, count($array), '?'));
+            $sColumns = implode(',', array_keys($array));
+            $sValues = implode(',', array_fill(0, count($array), '?'));
 
-            $stmt = $this->database->prepare("INSERT INTO $table ({$strColumns}) VALUES ({$strValues})");
+            $stmt = $this->database->prepare("INSERT INTO $table ({$sColumns}) VALUES ({$sValues})");
             return $stmt->execute(array_values($array));
         }
         catch(PDOException $e)
@@ -60,7 +60,7 @@ class SQLite
     }
 }
 
-class SQliteTable
+class SQLiteTable
 {
     var $name;
     var $fields;
@@ -70,12 +70,12 @@ class SQliteTable
     }
     
     public function addField($fieldName, $fieldType) {
-        $tmp = new SQliteField($fieldName, $fieldType);
-        $this->fields[] = $tmp;
+        $field = new SQLiteField($fieldName, $fieldType);
+        $this->fields[] = $field;
     }
 }
 
-class SQliteField
+class SQLiteField
 {
     var $name;
     var $type;
