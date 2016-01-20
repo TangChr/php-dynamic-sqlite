@@ -6,7 +6,7 @@
 require 'dynamic_sqlite.php';
 
 $db = 'messages.db';
-$table = new SQliteTable('message');
+$table = new SQLiteTable('message');
 $table->addField('id', 'INTEGER PRIMARY KEY');
 $table->addField('title', 'TEXT');
 $table->addField('text', 'TEXT');
