@@ -1,5 +1,6 @@
-PHP Dynamic SQLite
-==============
+# PHP Dynamic SQLite
+[![License](https://img.shields.io/github/license/TangChr/php-dynamic-sqlite.svg)](https://raw.githubusercontent.com/TangChr/php-dynamic-sqlite/master/LICENSE)
+
 PHP-library for working with SQLite databases.
 
 
